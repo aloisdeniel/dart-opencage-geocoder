@@ -5,6 +5,8 @@ geocoder.
 
 ## Usage
 
+Import `package:opencage_geocoder/opencage_geocoder.dart`, and use the `Geocoder` to access geocoding services.
+
 A simple usage example:
 
 ```dart
@@ -19,6 +21,8 @@ You can also add one of the named parameter (`language`, `countryCode`, `bounds`
 ```dart
 var response = await geocoder.geocode("rennes", limit: 2, countryCode: "fr");
 ```
+
+You will find links to the API docs on the [pub page](https://pub.dartlang.org/packages/opencage_geocoder).
 
 ## Contributions
 
