@@ -1,6 +1,6 @@
 # OpenCage Data Geocoding Library for Dart
 
-A Dart package that provides geocoding and reverse geocoding of locations using the  [OpenCage Geocoder](http://geocoder.opencagedata.com/)
+A Dart package that provides geocoding and reverse geocoding of locations using the  [OpenCage Geocoder](https://opencagedata.com)
 geocoder. 
 
 ## Usage
