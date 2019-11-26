@@ -38,8 +38,8 @@ class Geocoder {
     var uri = _createUrl(args);
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
-    var jsonString = await response.transform(UTF8.decoder).join();
-    var data = JSON.decode(jsonString);
+    var jsonString = await utf8.decoder.bind(response).join();
+    var data = json.decode(jsonString);
     return new GeocoderResponse.fromJson(data);
   }
 
