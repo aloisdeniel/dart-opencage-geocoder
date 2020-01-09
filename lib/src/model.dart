@@ -6,26 +6,31 @@ part 'model.g.dart';
 
 @JsonSerializable()
 class Coordinates {
-
   @JsonKey(name: 'lat')
   final double latitude;
   @JsonKey(name: 'lng')
   final double longitude;
 
-  Coordinates(this.latitude, this.longitude);
+  const Coordinates(
+    this.latitude,
+    this.longitude,
+  );
 
-  factory Coordinates.fromJson(Map<String, dynamic> json) => _$CoordinatesFromJson(json);
+  factory Coordinates.fromJson(Map<String, dynamic> json) =>
+      _$CoordinatesFromJson(json);
 
   String toString() => "{$latitude,$longitude}";
 }
 
 @JsonSerializable()
 class Point {
-
   final double x;
   final double y;
 
-  Point(this.x, this.y);
+  const Point(
+    this.x,
+    this.y,
+  );
 
   factory Point.fromJson(Map<String, dynamic> json) => _$PointFromJson(json);
 
@@ -34,11 +39,13 @@ class Point {
 
 @JsonSerializable()
 class Bounds {
-
   final Coordinates northeast;
   final Coordinates southwest;
 
-  Bounds(this.northeast, this.southwest);
+  const Bounds(
+    this.northeast,
+    this.southwest,
+  );
 
   factory Bounds.fromJson(Map<String, dynamic> json) => _$BoundsFromJson(json);
 
@@ -47,54 +54,61 @@ class Bounds {
 
 @JsonSerializable()
 class Timestamp {
-
   @JsonKey(name: 'created_http')
   final String createdHttp;
   @JsonKey(name: 'created_unix')
   final double createdUnix;
 
-  Timestamp(this.createdHttp, this.createdUnix);
+  const Timestamp(
+    this.createdHttp,
+    this.createdUnix,
+  );
 
-  factory Timestamp.fromJson(Map<String, dynamic> json) => _$TimestampFromJson(json);
+  factory Timestamp.fromJson(Map<String, dynamic> json) =>
+      _$TimestampFromJson(json);
 
   String toString() => "{http:$createdHttp,unix:$createdUnix}";
 }
 
 @JsonSerializable()
 class StayInformed {
-
   final String blog;
   final String twitter;
 
-  StayInformed(this.blog, this.twitter);
+  const StayInformed(
+    this.blog,
+    this.twitter,
+  );
 
-  factory StayInformed.fromJson(Map<String, dynamic> json) => _$StayInformedFromJson(json);
+  factory StayInformed.fromJson(Map<String, dynamic> json) =>
+      _$StayInformedFromJson(json);
 }
 
 @JsonSerializable()
 class Status {
-
   final int code;
   final String message;
 
-  Status(this.code, this.message);
+  const Status(
+    this.code,
+    this.message,
+  );
 
   factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);
 }
 
 @JsonSerializable()
 class What3words {
-
   final String words;
 
-  What3words(this.words);
+  const What3words(this.words);
 
-  factory What3words.fromJson(Map<String, dynamic> json) => _$What3wordsFromJson(json);
+  factory What3words.fromJson(Map<String, dynamic> json) =>
+      _$What3wordsFromJson(json);
 }
 
 @JsonSerializable()
 class Timezone {
-
   final String name;
   final String shortName;
   @JsonKey(name: 'now_in_dst')
@@ -104,46 +118,52 @@ class Timezone {
   @JsonKey(name: 'offset_string')
   final String offsetString;
 
-  Timezone(this.name,
-           this.shortName,
-           this.nowInDst,
-           this.offsetSec,
-           this.offsetString);
+  const Timezone(
+    this.name,
+    this.shortName,
+    this.nowInDst,
+    this.offsetSec,
+    this.offsetString,
+  );
 
-  factory Timezone.fromJson(Map<String, dynamic> json)
-  {
+  factory Timezone.fromJson(Map<String, dynamic> json) {
     // Fix needed since short_name can be string or double
-     var result = _$TimezoneFromJson(json);
-     var short_name = json['short_name']?.toString();
-     return new Timezone(result.name, short_name, result.nowInDst, result.offsetSec, result.offsetString);
+    var result = _$TimezoneFromJson(json);
+    var short_name = json['short_name']?.toString();
+    return new Timezone(result.name, short_name, result.nowInDst,
+        result.offsetSec, result.offsetString);
   }
 }
 
 @JsonSerializable()
 class Rise {
-
   final double nautical;
   final double apparent;
   final double astronomical;
   final double civil;
 
-  Rise(this.nautical,
-       this.apparent,
-       this.astronomical,
-       this.civil);
+  const Rise(
+    this.nautical,
+    this.apparent,
+    this.astronomical,
+    this.civil,
+  );
 
   factory Rise.fromJson(Map<String, dynamic> json) => _$RiseFromJson(json);
 
-  String toString() => "{nautical:$nautical, apparent:$apparent, astronomical:$astronomical, civil:$civil}";
+  String toString() =>
+      "{nautical:$nautical, apparent:$apparent, astronomical:$astronomical, civil:$civil}";
 }
 
 @JsonSerializable()
 class Sun {
-
   final Rise rise;
   final Rise set;
 
-  Sun(this.rise, this.set);
+  const Sun(
+    this.rise,
+    this.set,
+  );
 
   factory Sun.fromJson(Map<String, dynamic> json) => _$SunFromJson(json);
 
@@ -152,12 +172,14 @@ class Sun {
 
 @JsonSerializable()
 class OSM {
-
   final String url;
   @JsonKey(name: 'edit_url')
   final String editUrl;
 
-  OSM(this.url, this.editUrl);
+  const OSM(
+    this.url,
+    this.editUrl,
+  );
 
   factory OSM.fromJson(Map<String, dynamic> json) => _$OSMFromJson(json);
 
@@ -166,25 +188,31 @@ class OSM {
 
 @JsonSerializable()
 class Rate {
-
   final int limit;
   final int remaining;
   final int reset;
 
-  Rate(this.limit, this.remaining, this.reset);
+  const Rate(
+    this.limit,
+    this.remaining,
+    this.reset,
+  );
 
   factory Rate.fromJson(Map<String, dynamic> json) => _$RateFromJson(json);
 }
 
 @JsonSerializable()
 class Licence {
-
   final String name;
   final String url;
 
-  Licence(this.name, this.url);
+  const Licence(
+    this.name,
+    this.url,
+  );
 
-  factory Licence.fromJson(Map<String, dynamic> json) => _$LicenceFromJson(json);
+  factory Licence.fromJson(Map<String, dynamic> json) =>
+      _$LicenceFromJson(json);
 
   String toString() => "{$name:$url}";
 }
@@ -211,32 +239,37 @@ class Annotations {
   @JsonKey(name: 'OSM')
   final OSM osm;
 
-  Annotations(this.dms,
-             this.mgrs,
-             this.maidenhead,
-             this.mercator,
-             this.osm,
-             this.callingCode,
-             this.currency,
-             this.flag,
-             this.geohash,
-             this.qibla,
-             this.sun,
-             this.timezone,
-             this.what3words);
+  const Annotations(
+    this.dms,
+    this.mgrs,
+    this.maidenhead,
+    this.mercator,
+    this.osm,
+    this.callingCode,
+    this.currency,
+    this.flag,
+    this.geohash,
+    this.qibla,
+    this.sun,
+    this.timezone,
+    this.what3words,
+  );
 
-  factory Annotations.fromJson(Map<String, dynamic> json) => _$AnnotationsFromJson(json);
+  factory Annotations.fromJson(Map<String, dynamic> json) =>
+      _$AnnotationsFromJson(json);
 }
 
 @JsonSerializable()
 class DMS {
-
   @JsonKey(name: 'lat')
   final String latitude;
   @JsonKey(name: 'lng')
   final String longitude;
 
-  DMS(this.latitude, this.longitude);
+  const DMS(
+    this.latitude,
+    this.longitude,
+  );
 
   factory DMS.fromJson(Map<String, dynamic> json) => _$DMSFromJson(json);
 
@@ -245,7 +278,6 @@ class DMS {
 
 @JsonSerializable()
 class Currency {
-
   final String name;
   final String symbol;
   @JsonKey(name: 'decimal_mark')
@@ -266,24 +298,26 @@ class Currency {
   @JsonKey(name: 'thousands_separator')
   final String thousandsSeparator;
 
-  Currency(this.name,
-      this.decimalMark,
-      this.htmlEntity,
-      this.isoCode,
-      this.isoNumeric,
-      this.smallestDenomination,
-      this.subunit,
-      this.subunitToUnit,
-      this.symbol,
-      this.symbolFirst,
-      this.thousandsSeparator);
+  const Currency(
+    this.name,
+    this.decimalMark,
+    this.htmlEntity,
+    this.isoCode,
+    this.isoNumeric,
+    this.smallestDenomination,
+    this.subunit,
+    this.subunitToUnit,
+    this.symbol,
+    this.symbolFirst,
+    this.thousandsSeparator,
+  );
 
-  factory Currency.fromJson(Map<String, dynamic> json) => _$CurrencyFromJson(json);
+  factory Currency.fromJson(Map<String, dynamic> json) =>
+      _$CurrencyFromJson(json);
 }
 
 @JsonSerializable()
 class Components {
-
   final String city;
   final String state;
   final String country;
@@ -303,25 +337,27 @@ class Components {
   @JsonKey(name: '_type')
   final String type;
 
-  Components(this.type,
-      this.country,
-      this.countryCode,
-      this.state,
-      this.stateDistrict,
-      this.county,
-      this.city,
-      this.cityDistrict,
-      this.suburb,
-      this.road,
-      this.houseNumber,
-      this.politicalUnion);
+  const Components(
+    this.type,
+    this.country,
+    this.countryCode,
+    this.state,
+    this.stateDistrict,
+    this.county,
+    this.city,
+    this.cityDistrict,
+    this.suburb,
+    this.road,
+    this.houseNumber,
+    this.politicalUnion,
+  );
 
-  factory Components.fromJson(Map<String, dynamic> json) => _$ComponentsFromJson(json);
+  factory Components.fromJson(Map<String, dynamic> json) =>
+      _$ComponentsFromJson(json);
 }
 
 @JsonSerializable()
 class Result {
-
   final Annotations annotations;
   final Components components;
   final int confidence;
@@ -329,19 +365,20 @@ class Result {
   final Bounds bounds;
   final Coordinates geometry;
 
-  Result(this.annotations,
-         this.components,
-         this.bounds,
-         this.confidence,
-         this.formatted,
-         this.geometry);
+  const Result(
+    this.annotations,
+    this.components,
+    this.bounds,
+    this.confidence,
+    this.formatted,
+    this.geometry,
+  );
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
 }
 
 @JsonSerializable()
 class GeocoderResponse {
-
   final List<Licence> licenses;
   final String documentation;
   final Rate rate;
@@ -353,14 +390,17 @@ class GeocoderResponse {
   @JsonKey(name: 'stay_informed')
   final StayInformed stayInformed;
 
-  GeocoderResponse(this.licenses,
-      this.documentation,
-      this.rate,
-      this.stayInformed,
-      this.thanks,
-      this.timestamp,
-      this.results,
-      this.totalResults);
+  const GeocoderResponse(
+    this.licenses,
+    this.documentation,
+    this.rate,
+    this.stayInformed,
+    this.thanks,
+    this.timestamp,
+    this.results,
+    this.totalResults,
+  );
 
-  factory GeocoderResponse.fromJson(Map<String, dynamic> json) => _$GeocoderResponseFromJson(json);
+  factory GeocoderResponse.fromJson(Map<String, dynamic> json) =>
+      _$GeocoderResponseFromJson(json);
 }
