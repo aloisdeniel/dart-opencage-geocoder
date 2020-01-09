@@ -4,13 +4,20 @@ import 'dart:convert';
 
 import 'model.dart';
 
+/// A geocoder based on OpenCage api.
+///
+/// More details here : https://opencagedata.com/.
 class Geocoder {
   static const String host = "https://api.opencagedata.com/geocode/v1/json";
 
   final String _baseUrl;
 
+  /// Create an OpenCage geocoder for the given [apiKey].
   const Geocoder(String apiKey) : this._baseUrl = "${host}?key=${apiKey}";
 
+  /// Get coordinates and data from a search [query].
+  ///
+  /// All optional parameters are described here : https://opencagedata.com/api#request.
   Future<GeocoderResponse> geocode(String query,
       {String language = "en",
       String countryCode = null,
@@ -37,28 +44,36 @@ class Geocoder {
     });
   }
 
-  Future<GeocoderResponse> reverseGeocode(double latitude, double longitude,
-      {String language = "en",
-      String countryCode = null,
-      Bounds bounds = null,
-      bool abbrv = false,
-      int limit = 10,
-      int minConfidence = 0,
-      bool noAnnotations = false,
-      bool noDedupe = false,
-      bool noRecord = false,
-      bool addRequest = false}) {
-    return geocode("${latitude}+${longitude}",
-        language: language,
-        countryCode: countryCode,
-        bounds: bounds,
-        abbrv: abbrv,
-        limit: limit,
-        minConfidence: minConfidence,
-        noAnnotations: noAnnotations,
-        noDedupe: noDedupe,
-        noRecord: noRecord,
-        addRequest: addRequest);
+  /// Get address detail from [latitude] and [longitude] coordinates.
+  ///
+  /// All optional parameters are described here : https://opencagedata.com/api#request.
+  Future<GeocoderResponse> reverseGeocode(
+    double latitude,
+    double longitude, {
+    String language = "en",
+    String countryCode = null,
+    Bounds bounds = null,
+    bool abbrv = false,
+    int limit = 10,
+    int minConfidence = 0,
+    bool noAnnotations = false,
+    bool noDedupe = false,
+    bool noRecord = false,
+    bool addRequest = false,
+  }) {
+    return geocode(
+      "${latitude}+${longitude}",
+      language: language,
+      countryCode: countryCode,
+      bounds: bounds,
+      abbrv: abbrv,
+      limit: limit,
+      minConfidence: minConfidence,
+      noAnnotations: noAnnotations,
+      noDedupe: noDedupe,
+      noRecord: noRecord,
+      addRequest: addRequest,
+    );
   }
 
   Future<GeocoderResponse> _send(Map args) async {
