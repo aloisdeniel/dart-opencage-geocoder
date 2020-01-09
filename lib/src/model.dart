@@ -102,7 +102,7 @@ class Timezone {
   @JsonKey(name: 'offset_sec')
   final double offsetSec;
   @JsonKey(name: 'offset_string')
-  final double offsetString;
+  final String offsetString;
 
   Timezone(this.name,
            this.shortName,
@@ -255,7 +255,7 @@ class Currency {
   @JsonKey(name: 'iso_code')
   final String isoCode;
   @JsonKey(name: 'iso_numeric')
-  final int isoNumeric;
+  final String isoNumeric;
   @JsonKey(name: 'smallest_denomination')
   final int smallestDenomination;
   final String subunit;
