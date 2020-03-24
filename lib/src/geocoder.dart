@@ -61,19 +61,19 @@ class Geocoder {
     bool noRecord = false,
     bool addRequest = false,
   }) {
-    return geocode(
-      "${latitude}+${longitude}",
-      language: language,
-      countryCode: countryCode,
-      bounds: bounds,
-      abbrv: abbrv,
-      limit: limit,
-      minConfidence: minConfidence,
-      noAnnotations: noAnnotations,
-      noDedupe: noDedupe,
-      noRecord: noRecord,
-      addRequest: addRequest,
-    );
+    return _send({
+      'q': {'latitude': latitude, 'longitude': longitude},
+      'language': language,
+      'countryCode': countryCode,
+      'bounds': bounds,
+      'limit': limit,
+      'no_annotations': noAnnotations,
+      'min_confidence': minConfidence,
+      'add_request': addRequest,
+      'no_dedupe': noDedupe,
+      'no_record': noRecord,
+      'abbrv': abbrv,
+    });
   }
 
   Future<GeocoderResponse> _send(Map args) async {
@@ -100,6 +100,9 @@ class Geocoder {
   String _formatQueryArgValue(Object value) {
     if (value is bool) {
       return value ? "1" : "0";
+    }
+    if (value is Map) {
+      return '${value['latitude']}+${value['longitude']}';
     }
     if (value is Bounds) {
       return "${value.northeast.longitude}%2C${value.northeast.latitude}%2C${value.southwest.longitude}%2C${value.southwest.latitude}";
