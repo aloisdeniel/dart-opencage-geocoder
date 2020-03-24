@@ -288,6 +288,7 @@ Components _$ComponentsFromJson(Map<String, dynamic> json) {
     json['suburb'] as String,
     json['road'] as String,
     json['street'] as String,
+    json['postcode'] as String,
     json['house_number'] as String,
     json['political_union'] as String,
   );
@@ -302,6 +303,7 @@ Map<String, dynamic> _$ComponentsToJson(Components instance) =>
       'county': instance.county,
       'road': instance.road,
       'street': instance.street,
+      'postcode': instance.postCode,
       'suburb': instance.suburb,
       'house_number': instance.houseNumber,
       'country_code': instance.countryCode,
