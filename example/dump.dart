@@ -40,6 +40,7 @@ class Dumper {
       print('      houseNumber: ${r.components?.houseNumber}');
       print('      road: ${r.components?.road}');
       print('      street: ${r.components?.street}');
+      print('      postCode: ${r.components?.postCode}');
       print('   annotations:');
       print('      callingCode: ${r.annotations?.callingCode}');
       print('      dms: ${r.annotations?.dms}');
