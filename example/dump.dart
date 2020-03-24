@@ -33,11 +33,13 @@ class Dumper {
       print('      stateDistrict: ${r.components?.stateDistrict}');
       print('      suburb: ${r.components?.suburb}');
       print('      city: ${r.components?.city}');
+      print('      town: ${r.components?.town}');
       print('      cityDistrict: ${r.components?.cityDistrict}');
       print('      politicalUnion: ${r.components?.politicalUnion}');
       print('      county: ${r.components?.county}');
       print('      houseNumber: ${r.components?.houseNumber}');
       print('      road: ${r.components?.road}');
+      print('      street: ${r.components?.street}');
       print('   annotations:');
       print('      callingCode: ${r.annotations?.callingCode}');
       print('      dms: ${r.annotations?.dms}');

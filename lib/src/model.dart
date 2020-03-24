@@ -318,11 +318,13 @@ class Currency {
 
 @JsonSerializable()
 class Components {
+  final String town;
   final String city;
   final String state;
   final String country;
   final String county;
   final String road;
+  final String street;
   final String suburb;
   @JsonKey(name: 'house_number')
   final String houseNumber;
@@ -345,9 +347,11 @@ class Components {
     this.stateDistrict,
     this.county,
     this.city,
+    this.town,
     this.cityDistrict,
     this.suburb,
     this.road,
+    this.street,
     this.houseNumber,
     this.politicalUnion,
   );
