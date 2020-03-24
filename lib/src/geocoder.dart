@@ -28,6 +28,7 @@ class Geocoder {
       bool noAnnotations = false,
       bool noDedupe = false,
       bool noRecord = false,
+      bool roadInfo = false,
       bool addRequest = false}) {
     return _send({
       'q': query,
@@ -40,6 +41,7 @@ class Geocoder {
       'add_request': addRequest,
       'no_dedupe': noDedupe,
       'no_record': noRecord,
+      'roadinfo': roadInfo,
       'abbrv': abbrv,
     });
   }
@@ -59,6 +61,7 @@ class Geocoder {
     bool noAnnotations = false,
     bool noDedupe = false,
     bool noRecord = false,
+    bool roadInfo = false,
     bool addRequest = false,
   }) {
     return _send({
@@ -72,6 +75,7 @@ class Geocoder {
       'add_request': addRequest,
       'no_dedupe': noDedupe,
       'no_record': noRecord,
+      'roadinfo': roadInfo,
       'abbrv': abbrv,
     });
   }
