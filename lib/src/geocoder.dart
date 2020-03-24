@@ -8,18 +8,18 @@ import 'model.dart';
 ///
 /// More details here : https://opencagedata.com/.
 class Geocoder {
-  static const String host = "https://api.opencagedata.com/geocode/v1/json";
+  static const String host = 'https://api.opencagedata.com/geocode/v1/json';
 
   final String _baseUrl;
 
   /// Create an OpenCage geocoder for the given [apiKey].
-  const Geocoder(String apiKey) : this._baseUrl = "${host}?key=${apiKey}";
+  const Geocoder(String apiKey) : this._baseUrl = '${host}?key=${apiKey}';
 
   /// Get coordinates and data from a search [query].
   ///
   /// All optional parameters are described here : https://opencagedata.com/api#request.
   Future<GeocoderResponse> geocode(String query,
-      {String language = "en",
+      {String language = 'en',
       String countryCode = null,
       Bounds bounds = null,
       bool abbrv = false,
@@ -40,7 +40,7 @@ class Geocoder {
       'add_request': addRequest,
       'no_dedupe': noDedupe,
       'no_record': noRecord,
-      'abbrv': abbrv
+      'abbrv': abbrv,
     });
   }
 
@@ -50,7 +50,7 @@ class Geocoder {
   Future<GeocoderResponse> reverseGeocode(
     double latitude,
     double longitude, {
-    String language = "en",
+    String language = 'en',
     String countryCode = null,
     Bounds bounds = null,
     bool abbrv = false,
@@ -91,7 +91,7 @@ class Geocoder {
     queryArgs.forEach((key, value) {
       if (value != null && value != false) {
         var formattedValue = _formatQueryArgValue(value);
-        result.write("&${key}=${formattedValue}");
+        result.write('&${key}=${formattedValue}');
       }
     });
     return Uri.parse(result.toString());
@@ -99,13 +99,13 @@ class Geocoder {
 
   String _formatQueryArgValue(Object value) {
     if (value is bool) {
-      return value ? "1" : "0";
+      return value ? '1' : '0';
     }
     if (value is Map) {
       return '${value['latitude']}+${value['longitude']}';
     }
     if (value is Bounds) {
-      return "${value.northeast.longitude}%2C${value.northeast.latitude}%2C${value.southwest.longitude}%2C${value.southwest.latitude}";
+      return '${value.northeast.longitude}%2C${value.northeast.latitude}%2C${value.southwest.longitude}%2C${value.southwest.latitude}';
     }
     if (value is int || value is double) {
       return value.toString();
